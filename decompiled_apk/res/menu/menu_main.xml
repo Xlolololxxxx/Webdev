@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_baseline_search_white_24" android:id="@id/action_search" android:title="@string/action_search" app:actionViewClass="androidx.appcompat.widget.SearchView" app:showAsAction="always" />
+    <item android:icon="@drawable/ic_baseline_home_white_24" android:id="@id/action_home" android:title="@string/title_home" app:showAsAction="never" />
+    <item android:icon="@drawable/ic_baseline_filter_list_24" android:id="@id/action_filter" android:title="@string/title_filter" app:showAsAction="never" />
+    <item android:icon="@drawable/ic_baseline_close_white_24" android:id="@id/action_clear_requests" android:title="@string/title_clear_requests" app:showAsAction="never" />
+    <item android:icon="@drawable/ic_baseline_computer_white_24" android:id="@id/action_pc" android:checked="false" android:title="@string/title_pc" android:checkable="true" app:showAsAction="never" />
+</menu>

@@ -1,0 +1,44 @@
+.class public final Lio/appmetrica/analytics/impl/Si;
+.super Lio/appmetrica/analytics/impl/W2;
+.source "SourceFile"
+
+
+# direct methods
+.method public constructor <init>(Lio/appmetrica/analytics/impl/p2;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1}, Lio/appmetrica/analytics/impl/W2;-><init>(Lio/appmetrica/analytics/impl/p2;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lio/appmetrica/analytics/impl/fo;Lio/appmetrica/analytics/impl/ho;Lio/appmetrica/analytics/impl/o2;)Lio/appmetrica/analytics/impl/ho;
+    .locals 1
+
+    .line 1
+    check-cast p3, Lio/appmetrica/analytics/impl/Rd;
+
+    invoke-virtual {p3}, Lio/appmetrica/analytics/impl/Rd;->a()Lio/appmetrica/analytics/impl/ho;
+
+    move-result-object p2
+
+    .line 2
+    iget-object p3, p2, Lio/appmetrica/analytics/impl/ho;->c:Lio/appmetrica/analytics/impl/io;
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p3, Lio/appmetrica/analytics/impl/io;->b:Z
+
+    .line 3
+    iget-object p3, p0, Lio/appmetrica/analytics/impl/W2;->a:Lio/appmetrica/analytics/impl/p2;
+
+    .line 4
+    invoke-interface {p3, p1, p2}, Lio/appmetrica/analytics/impl/p2;->a(Lio/appmetrica/analytics/impl/fo;Lio/appmetrica/analytics/impl/ho;)Lio/appmetrica/analytics/impl/ho;
+
+    move-result-object p1
+
+    return-object p1
+.end method
