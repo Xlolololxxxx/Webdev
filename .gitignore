@@ -18,3 +18,8 @@ SourceScanner/.gradle/8.2/checksums/sha1-checksums.bin
 
 # Local Maven repository
 local-maven-repo/
+
+# Build artifacts
+SourceScanner-Minimal/
+build-minimal/
+SensitiveDataScanner.apk.idsig
