@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Source Scanner</string>
+    <string name="hint_enter_url">Enter URL</string>
+    <string name="action_load">Load Website</string>
+    <string name="action_scan">Run Scan</string>
+    <string name="action_clear">Clear</string>
+    <string name="tab_sources">Sources</string>
+    <string name="tab_console">Console</string>
+    <string name="tab_scan_results">Scan Results</string>
+    <string name="loading">Loading...</string>
+    <string name="scanning">Scanning...</string>
+    <string name="error_invalid_url">Please enter a valid URL</string>
+    <string name="error_load_failed">Failed to load website</string>
+    <string name="scan_complete">Scan complete: %d issues found</string>
+    <string name="no_sources">No sources captured yet. Load a website to begin.</string>
+    <string name="no_results">No sensitive data found</string>
+</resources>

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+##############################################################################
+# Gradle start up script for POSIX
+##############################################################################
+
+# Add default JVM options here.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Use the maximum available, or set MAX_FD != -1 to use that value.
+MAX_FD="maximum"
+
+GRADLE_HOME=/home/user/Webdev/SourceScanner/gradle/gradle-8.2
+
+exec "$GRADLE_HOME/bin/gradle" "$@"
