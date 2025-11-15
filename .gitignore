@@ -11,3 +11,10 @@ IMPLEMENTATION_QUICK_REFERENCE.md
 PAYMENT_PROVIDER_API_KEYS_RESEARCH.md
 RESEARCH_SUMMARY.md
 payment_provider_patterns.json
+
+# Gradle build artifacts
+SourceScanner/.gradle/8.2/checksums/md5-checksums.bin
+SourceScanner/.gradle/8.2/checksums/sha1-checksums.bin
+
+# Local Maven repository
+local-maven-repo/
