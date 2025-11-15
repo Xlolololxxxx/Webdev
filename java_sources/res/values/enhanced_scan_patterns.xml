@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="enhanced_scan_patterns">
+        <!-- Format: Name|Severity|KeyType|Environment|Provider|Regex|VerificationEndpoint|VerificationMethod|Description -->
+
+        <!-- ========================================
+             STRIPE PAYMENT PROVIDER
+             ======================================== -->
+        <item>Stripe Live Secret Key|CRITICAL|PRIVATE|PRODUCTION|Stripe|sk_live_[0-9a-zA-Z]{24,99}|https://api.stripe.com/v1/account|GET|Stripe production secret key with full API access</item>
+        <item>Stripe Test Secret Key|HIGH|PRIVATE|TEST|Stripe|sk_test_[0-9a-zA-Z]{24,99}|https://api.stripe.com/v1/account|GET|Stripe test secret key for sandbox environment</item>
+        <item>Stripe Live Publishable Key|MEDIUM|PUBLIC|PRODUCTION|Stripe|pk_live_[0-9a-zA-Z]{24,99}||POST|Stripe production publishable key for client-side use</item>
+        <item>Stripe Test Publishable Key|LOW|PUBLIC|TEST|Stripe|pk_test_[0-9a-zA-Z]{24,99}||POST|Stripe test publishable key for client-side sandbox use</item>
+        <item>Stripe Live Restricted Key|HIGH|PRIVATE|PRODUCTION|Stripe|rk_live_[0-9a-zA-Z]{24,99}|https://api.stripe.com/v1/account|GET|Stripe production restricted key with limited permissions</item>
+        <item>Stripe Test Restricted Key|MEDIUM|PRIVATE|TEST|Stripe|rk_test_[0-9a-zA-Z]{24,99}|https://api.stripe.com/v1/account|GET|Stripe test restricted key with limited permissions</item>
+        <item>Stripe Webhook Secret|HIGH|PRIVATE|UNKNOWN|Stripe|whsec_[0-9a-zA-Z]{32,99}|||Stripe webhook signing secret for verifying webhooks</item>
+        <item>Stripe Connect OAuth Secret|CRITICAL|PRIVATE|PRODUCTION|Stripe|sk_live_[0-9a-zA-Z]{24,99}|https://api.stripe.com/v1/account|GET|Stripe Connect OAuth access token</item>
+
+        <!-- ========================================
+             SQUARE PAYMENT PROVIDER
+             ======================================== -->
+        <item>Square Production Access Token|CRITICAL|PRIVATE|PRODUCTION|Square|EAAA[A-Za-z0-9_-]{50,}|https://connect.squareup.com/v2/locations|GET|Square production access token</item>
+        <item>Square Sandbox Access Token|HIGH|PRIVATE|TEST|Square|EAAAE[A-Za-z0-9_-]{50,}|https://connect.squareupsandbox.com/v2/locations|GET|Square sandbox access token</item>
+        <item>Square Client ID|MEDIUM|PUBLIC|UNKNOWN|Square|sq0idp-[0-9A-Za-z\-_]{22,}|||Square OAuth application client ID</item>
+        <item>Square Client Secret|CRITICAL|PRIVATE|UNKNOWN|Square|sq0csp-[0-9A-Za-z\-_]{43,}|||Square OAuth application client secret</item>
+        <item>Square Authorization Code|HIGH|PRIVATE|UNKNOWN|Square|sq0cgb-[0-9A-Za-z\-_]{20,}|||Square OAuth authorization code</item>
+        <item>Square Legacy Access Token|HIGH|PRIVATE|UNKNOWN|Square|sq0atp-[0-9A-Za-z\-_]{22,}|https://connect.squareup.com/v2/locations|GET|Square legacy format access token</item>
+
+        <!-- ========================================
+             PAYPAL PAYMENT PROVIDER
+             ======================================== -->
+        <item>PayPal Client ID|MEDIUM|PUBLIC|UNKNOWN|PayPal|(?i)paypal.*client[_-]?id[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{40,80}|https://api-m.paypal.com/v1/oauth2/token|POST|PayPal REST API client ID</item>
+        <item>PayPal Client Secret|CRITICAL|PRIVATE|UNKNOWN|PayPal|(?i)paypal.*client[_-]?secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{40,80}|https://api-m.paypal.com/v1/oauth2/token|POST|PayPal REST API client secret</item>
+        <item>PayPal NVP API Username|MEDIUM|PUBLIC|UNKNOWN|PayPal|(?i)paypal.*api.*username[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+|||PayPal NVP/SOAP API username</item>
+        <item>PayPal NVP API Password|HIGH|PRIVATE|UNKNOWN|PayPal|(?i)paypal.*api.*password[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{16,24}|||PayPal NVP/SOAP API password</item>
+        <item>PayPal API Signature|CRITICAL|PRIVATE|UNKNOWN|PayPal|[A-Za-z0-9./-]{56,58}|||PayPal API signature for NVP/SOAP authentication</item>
+        <item>PayPal Braintree Production Access Token|CRITICAL|PRIVATE|PRODUCTION|PayPal|access_token\$production\$[a-z0-9]{16}\$[a-f0-9]{32}|||PayPal Braintree production access token</item>
+        <item>PayPal Braintree Sandbox Access Token|HIGH|PRIVATE|TEST|PayPal|access_token\$sandbox\$[a-z0-9]{16}\$[a-f0-9]{32}|||PayPal Braintree sandbox access token</item>
+
+        <!-- ========================================
+             BRAINTREE PAYMENT PROVIDER
+             ======================================== -->
+        <item>Braintree Public Key|LOW|PUBLIC|UNKNOWN|Braintree|(?i)braintree.*public[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[a-z0-9]{16}|||Braintree public key for client-side use</item>
+        <item>Braintree Private Key|CRITICAL|PRIVATE|UNKNOWN|Braintree|(?i)braintree.*private[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32}|https://api.braintreegateway.com/merchants/|POST|Braintree private key for server-side authentication</item>
+        <item>Braintree Tokenization Key Production|MEDIUM|PUBLIC|PRODUCTION|Braintree|production_[a-z0-9_]{10,50}|||Braintree production tokenization key</item>
+        <item>Braintree Tokenization Key Sandbox|LOW|PUBLIC|TEST|Braintree|sandbox_[a-z0-9_]{10,50}|||Braintree sandbox tokenization key</item>
+        <item>Braintree Production Access Token|CRITICAL|PRIVATE|PRODUCTION|Braintree|access_token\$production\$[a-z0-9]{16}\$[a-f0-9]{32}|https://payments.braintree-api.com/graphql|POST|Braintree production access token</item>
+        <item>Braintree Sandbox Access Token|HIGH|PRIVATE|TEST|Braintree|access_token\$sandbox\$[a-z0-9]{16}\$[a-f0-9]{32}|https://payments.sandbox.braintree-api.com/graphql|POST|Braintree sandbox access token</item>
+
+        <!-- ========================================
+             ADYEN PAYMENT PROVIDER
+             ======================================== -->
+        <item>Adyen API Key|CRITICAL|PRIVATE|UNKNOWN|Adyen|(?i)adyen.*api[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{32,}|https://checkout-test.adyen.com/v71/paymentMethods|POST|Adyen server-side API key</item>
+        <item>Adyen Live Client Key|MEDIUM|PUBLIC|PRODUCTION|Adyen|live_[A-Z0-9]{32}|||Adyen production client key for client-side use</item>
+        <item>Adyen Test Client Key|LOW|PUBLIC|TEST|Adyen|test_[A-Z0-9]{32}|||Adyen test client key for client-side sandbox use</item>
+        <item>Adyen Basic Auth Username|MEDIUM|PUBLIC|UNKNOWN|Adyen|ws[\[_]?\d+[\]]?@(BalancePlatform|Scope\.Company)\.[A-Za-z0-9]+|||Adyen web service basic authentication username</item>
+
+        <!-- ========================================
+             FINIX PAYMENT PROVIDER
+             ======================================== -->
+        <item>Finix API Username|MEDIUM|PUBLIC|UNKNOWN|Finix|US[a-zA-Z0-9_]{20,}|https://finix.sandbox-payments-api.com/identities|GET|Finix API username for basic authentication</item>
+        <item>Finix API Password|CRITICAL|PRIVATE|UNKNOWN|Finix|(?i)finix.*password[\s]*[:=][\s]*[&apos;&quot;]?[a-zA-Z0-9!@#$%^&amp;*()_+\-=]{40,60}|https://finix.sandbox-payments-api.com/identities|GET|Finix API password for basic authentication</item>
+
+        <!-- ========================================
+             CHECKBOOK PAYMENT PROVIDER
+             ======================================== -->
+        <item>Checkbook Publishable Key|LOW|PUBLIC|UNKNOWN|Checkbook|(?i)checkbook.*publishable[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32}|https://checkbook.io/v3/user|GET|Checkbook publishable key for client-side use</item>
+        <item>Checkbook Secret Key|CRITICAL|PRIVATE|UNKNOWN|Checkbook|(?i)checkbook.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{24,32}|https://checkbook.io/v3/user|GET|Checkbook secret key for server-side authentication</item>
+        <item>Checkbook Combined Credentials|CRITICAL|PRIVATE|UNKNOWN|Checkbook|[a-f0-9]{32}:[A-Za-z0-9]{24,32}|https://checkbook.io/v3/user|GET|Checkbook combined publishable:secret key format</item>
+
+        <!-- ========================================
+             PAYNEARME PAYMENT PROVIDER
+             ======================================== -->
+        <item>PayNearMe API Key|MEDIUM|PUBLIC|UNKNOWN|PayNearMe|(?i)paynearme.*api[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?api_key_[A-Za-z0-9\-_]{20,50}|||PayNearMe API key identifier</item>
+        <item>PayNearMe Secret Key|CRITICAL|PRIVATE|UNKNOWN|PayNearMe|(?i)paynearme.*secret[\s]*[:=][\s]*[&apos;&quot;]?secret_[A-Za-z0-9\-_]{32,64}|||PayNearMe secret key for HMAC signature generation</item>
+
+        <!-- ========================================
+             COINFLOW PAYMENT PROVIDER
+             ======================================== -->
+        <item>CoinFlow Merchant ID|LOW|PUBLIC|UNKNOWN|CoinFlow|(?i)coinflow.*merchant[_-]?id[\s]*[:=][\s]*[&apos;&quot;]?merchant_[A-Za-z0-9\-_]{16,40}|||CoinFlow merchant identifier</item>
+        <item>CoinFlow API Key|CRITICAL|PRIVATE|UNKNOWN|CoinFlow|(?i)coinflow.*api[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9\-_]{32,64}|||CoinFlow API key for server-side authentication</item>
+
+        <!-- ========================================
+             AWS (AMAZON WEB SERVICES)
+             ======================================== -->
+        <item>AWS Access Key ID|CRITICAL|PRIVATE|PRODUCTION|AWS|(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}|||AWS access key ID for API authentication</item>
+        <item>AWS Secret Access Key|CRITICAL|PRIVATE|PRODUCTION|AWS|(?i)aws.*secret.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9/+=]{40}|||AWS secret access key</item>
+        <item>AWS Session Token|HIGH|PRIVATE|PRODUCTION|AWS|(?i)aws.*session.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9/+=]{100,}|||AWS temporary session token</item>
+        <item>AWS Account ID|LOW|PUBLIC|PRODUCTION|AWS|(?i)aws.*account.*id[\s]*[:=][\s]*[&apos;&quot;]?\d{12}|||AWS 12-digit account identifier</item>
+        <item>AWS S3 Presigned URL|MEDIUM|PUBLIC|PRODUCTION|AWS|https://[a-z0-9.-]+\.s3[.-][a-z0-9-]*\.amazonaws\.com/.*[?&amp;]X-Amz-Signature=[a-f0-9]{64}|||AWS S3 presigned URL with temporary access</item>
+        <item>AWS API Gateway Key|HIGH|PRIVATE|PRODUCTION|AWS|[A-Za-z0-9]{20,40}|||AWS API Gateway API key</item>
+        <item>AWS Cognito User Pool ID|LOW|PUBLIC|PRODUCTION|AWS|[a-z]{2}-[a-z]+-\d_[A-Za-z0-9]{9}|||AWS Cognito user pool identifier</item>
+        <item>AWS Cognito Client ID|MEDIUM|PUBLIC|PRODUCTION|AWS|[0-9a-z]{26}|||AWS Cognito app client ID</item>
+        <item>AWS Cognito Client Secret|CRITICAL|PRIVATE|PRODUCTION|AWS|(?i)cognito.*client.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{40,60}|||AWS Cognito app client secret</item>
+        <item>AWS KMS Key ID|MEDIUM|PUBLIC|PRODUCTION|AWS|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||AWS KMS key identifier</item>
+
+        <!-- ========================================
+             GOOGLE CLOUD PLATFORM
+             ======================================== -->
+        <item>Google Cloud API Key|HIGH|PRIVATE|PRODUCTION|Google|AIza[0-9A-Za-z\-_]{35}|||Google Cloud API key</item>
+        <item>Google OAuth Access Token|HIGH|PRIVATE|PRODUCTION|Google|ya29\.[0-9A-Za-z\-_]+|||Google OAuth 2.0 access token</item>
+        <item>Google OAuth Refresh Token|CRITICAL|PRIVATE|PRODUCTION|Google|1//[0-9A-Za-z\-_]{43,}|||Google OAuth 2.0 refresh token</item>
+        <item>Google Cloud Service Account Key|CRITICAL|PRIVATE|PRODUCTION|Google|(?i)type[\s]*:[\s]*[&apos;&quot;]service_account[&apos;&quot;]|||Google Cloud service account JSON key file</item>
+        <item>Google Cloud Project ID|LOW|PUBLIC|PRODUCTION|Google|(?i)project[_-]?id[\s]*[:=][\s]*[&apos;&quot;]?[a-z][a-z0-9-]{4,28}[a-z0-9]|||Google Cloud project identifier</item>
+        <item>Firebase Web API Key|MEDIUM|PUBLIC|PRODUCTION|Google|AIza[0-9A-Za-z\-_]{35}|||Firebase web application API key</item>
+        <item>Firebase Database URL|LOW|PUBLIC|PRODUCTION|Google|https://[a-z0-9-]+\.firebaseio\.com|||Firebase Realtime Database URL</item>
+        <item>Firebase Storage Bucket|LOW|PUBLIC|PRODUCTION|Google|[a-z0-9-]+\.appspot\.com|||Firebase Storage bucket name</item>
+        <item>Google Client ID|MEDIUM|PUBLIC|PRODUCTION|Google|[0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com|||Google OAuth client ID</item>
+        <item>Google Client Secret|CRITICAL|PRIVATE|PRODUCTION|Google|(?i)google.*client.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{24}|||Google OAuth client secret</item>
+
+        <!-- ========================================
+             MICROSOFT AZURE
+             ======================================== -->
+        <item>Azure Storage Account Key|CRITICAL|PRIVATE|PRODUCTION|Azure|(?i)azure.*storage.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9+/=]{88}|||Azure Storage account access key</item>
+        <item>Azure Storage Connection String|CRITICAL|PRIVATE|PRODUCTION|Azure|DefaultEndpointsProtocol=https;AccountName=[a-z0-9]+;AccountKey=[A-Za-z0-9+/=]{88}|||Azure Storage connection string</item>
+        <item>Azure Client Secret|CRITICAL|PRIVATE|PRODUCTION|Azure|(?i)azure.*client.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-~.]{34,40}|||Azure Active Directory client secret</item>
+        <item>Azure Subscription ID|LOW|PUBLIC|PRODUCTION|Azure|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||Azure subscription identifier</item>
+        <item>Azure Tenant ID|LOW|PUBLIC|PRODUCTION|Azure|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||Azure Active Directory tenant ID</item>
+        <item>Azure Application ID|MEDIUM|PUBLIC|PRODUCTION|Azure|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||Azure application (client) ID</item>
+        <item>Azure Access Token|HIGH|PRIVATE|PRODUCTION|Azure|eyJ0eXAiOiJKV1QiLCJhbGciOi[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+|||Azure JWT access token</item>
+        <item>Azure Cosmos DB Key|CRITICAL|PRIVATE|PRODUCTION|Azure|(?i)cosmos.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9+/=]{88}|||Azure Cosmos DB master key</item>
+        <item>Azure DevOps PAT|HIGH|PRIVATE|PRODUCTION|Azure|[a-z0-9]{52}|||Azure DevOps personal access token</item>
+        <item>Azure SAS Token|HIGH|PRIVATE|PRODUCTION|Azure|(?i)sig=[A-Za-z0-9%]+&amp;se=\d{4}-\d{2}-\d{2}|||Azure shared access signature token</item>
+
+        <!-- ========================================
+             GITHUB
+             ======================================== -->
+        <item>GitHub Personal Access Token|HIGH|PRIVATE|PRODUCTION|GitHub|ghp_[0-9a-zA-Z]{36}|||GitHub personal access token</item>
+        <item>GitHub OAuth Access Token|HIGH|PRIVATE|PRODUCTION|GitHub|gho_[0-9a-zA-Z]{36}|||GitHub OAuth access token</item>
+        <item>GitHub App Token|HIGH|PRIVATE|PRODUCTION|GitHub|ghu_[0-9a-zA-Z]{36}|||GitHub App user-to-server token</item>
+        <item>GitHub Refresh Token|CRITICAL|PRIVATE|PRODUCTION|GitHub|ghr_[0-9a-zA-Z]{76}|||GitHub OAuth refresh token</item>
+        <item>GitHub Actions Secret|HIGH|PRIVATE|PRODUCTION|GitHub|(?i)github.*token[\s]*[:=][\s]*[&apos;&quot;]?gh[porus]_[0-9a-zA-Z]{36,}|||GitHub Actions workflow token</item>
+
+        <!-- ========================================
+             GENERIC SECRETS AND CREDENTIALS
+             ======================================== -->
+        <item>Generic API Key|MEDIUM|PRIVATE|UNKNOWN|Generic|(?i)api[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-]{32,}[&apos;&quot;]?|||Generic API key pattern</item>
+        <item>Generic Secret Key|HIGH|PRIVATE|UNKNOWN|Generic|(?i)secret[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-]{32,}[&apos;&quot;]?|||Generic secret key pattern</item>
+        <item>Generic Private Key|CRITICAL|PRIVATE|UNKNOWN|Generic|(?i)private[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-]{32,}[&apos;&quot;]?|||Generic private key pattern</item>
+        <item>Generic Access Token|HIGH|PRIVATE|UNKNOWN|Generic|(?i)access[_-]?token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-\.]{32,}[&apos;&quot;]?|||Generic access token pattern</item>
+        <item>Generic Bearer Token|HIGH|PRIVATE|UNKNOWN|Generic|(?i)bearer[\s]+[A-Za-z0-9\-._~+/]+=*|||Generic bearer token in authorization header</item>
+        <item>Generic Client Secret|CRITICAL|PRIVATE|UNKNOWN|Generic|(?i)client[_-]?secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-]{32,}[&apos;&quot;]?|||Generic OAuth client secret</item>
+        <item>Generic Auth Token|HIGH|PRIVATE|UNKNOWN|Generic|(?i)auth[_-]?token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-]{32,}[&apos;&quot;]?|||Generic authentication token</item>
+        <item>Generic Password|HIGH|PRIVATE|UNKNOWN|Generic|(?i)password[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9!@#$%^&amp;*()_+\-=]{8,}[&apos;&quot;]?|||Generic password in configuration</item>
+        <item>Generic Webhook Secret|HIGH|PRIVATE|UNKNOWN|Generic|(?i)webhook[_-]?secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-]{32,}[&apos;&quot;]?|||Generic webhook signing secret</item>
+        <item>Generic Encryption Key|CRITICAL|PRIVATE|UNKNOWN|Generic|(?i)encryption[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9+/=]{32,}[&apos;&quot;]?|||Generic encryption key</item>
+
+        <!-- ========================================
+             DATABASE CREDENTIALS
+             ======================================== -->
+        <item>MongoDB Connection String|CRITICAL|PRIVATE|PRODUCTION|MongoDB|mongodb(\+srv)?://[A-Za-z0-9_\-]+:[A-Za-z0-9_\-@%.]+@[A-Za-z0-9.-]+|||MongoDB connection string with credentials</item>
+        <item>PostgreSQL Connection String|CRITICAL|PRIVATE|PRODUCTION|PostgreSQL|postgres(ql)?://[A-Za-z0-9_\-]+:[A-Za-z0-9_\-@%.]+@[A-Za-z0-9.-]+|||PostgreSQL connection string with credentials</item>
+        <item>MySQL Connection String|CRITICAL|PRIVATE|PRODUCTION|MySQL|mysql://[A-Za-z0-9_\-]+:[A-Za-z0-9_\-@%.]+@[A-Za-z0-9.-]+|||MySQL connection string with credentials</item>
+        <item>Redis Connection String|HIGH|PRIVATE|PRODUCTION|Redis|redis://[A-Za-z0-9_\-]+:[A-Za-z0-9_\-@%.]+@[A-Za-z0-9.-]+|||Redis connection string with credentials</item>
+        <item>SQL Server Connection String|CRITICAL|PRIVATE|PRODUCTION|Microsoft|(?i)server=[^;]+;.*password=[^;]+;|||SQL Server connection string with password</item>
+        <item>Database Password|CRITICAL|PRIVATE|PRODUCTION|Generic|(?i)db[_-]?password[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9!@#$%^&amp;*()_+\-=]{8,}[&apos;&quot;]?|||Database password in configuration</item>
+        <item>JDBC Connection String|CRITICAL|PRIVATE|PRODUCTION|Generic|jdbc:[a-z]+://[A-Za-z0-9_\-]+:[A-Za-z0-9_\-@%.]+@[A-Za-z0-9.-:/]+|||JDBC connection string with credentials</item>
+        <item>Elasticsearch Credentials|HIGH|PRIVATE|PRODUCTION|Elasticsearch|https?://[A-Za-z0-9_\-]+:[A-Za-z0-9_\-@%.]+@[A-Za-z0-9.-]+:9200|||Elasticsearch URL with credentials</item>
+        <item>CouchDB Credentials|HIGH|PRIVATE|PRODUCTION|CouchDB|https?://[A-Za-z0-9_\-]+:[A-Za-z0-9_\-@%.]+@[A-Za-z0-9.-]+:5984|||CouchDB URL with credentials</item>
+        <item>Database API Key|HIGH|PRIVATE|PRODUCTION|Generic|(?i)db[_-]?api[_-]?key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-]{32,}[&apos;&quot;]?|||Database API key</item>
+
+        <!-- ========================================
+             JWT TOKENS
+             ======================================== -->
+        <item>JWT Token|HIGH|PRIVATE|UNKNOWN|Generic|eyJ[A-Za-z0-9_-]*\.eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]*|||JSON Web Token (JWT)</item>
+        <item>JWT with HS256|HIGH|PRIVATE|UNKNOWN|Generic|eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+|||JWT signed with HMAC SHA-256</item>
+        <item>JWT with RS256|MEDIUM|PRIVATE|UNKNOWN|Generic|eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+|||JWT signed with RSA SHA-256</item>
+        <item>JWT Secret Key|CRITICAL|PRIVATE|UNKNOWN|Generic|(?i)jwt[_-]?secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_\-]{32,}[&apos;&quot;]?|||JWT signing secret key</item>
+        <item>JWT Refresh Token|HIGH|PRIVATE|UNKNOWN|Generic|(?i)refresh[_-]?token[\s]*[:=][\s]*[&apos;&quot;]?eyJ[A-Za-z0-9_-]*\.eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]*|||JWT refresh token</item>
+
+        <!-- ========================================
+             SSH AND SSL/TLS KEYS
+             ======================================== -->
+        <item>SSH Private Key RSA|CRITICAL|PRIVATE|PRODUCTION|SSH|-----BEGIN RSA PRIVATE KEY-----|||SSH RSA private key</item>
+        <item>SSH Private Key DSA|CRITICAL|PRIVATE|PRODUCTION|SSH|-----BEGIN DSA PRIVATE KEY-----|||SSH DSA private key</item>
+        <item>SSH Private Key EC|CRITICAL|PRIVATE|PRODUCTION|SSH|-----BEGIN EC PRIVATE KEY-----|||SSH EC private key</item>
+        <item>SSH Private Key OpenSSH|CRITICAL|PRIVATE|PRODUCTION|SSH|-----BEGIN OPENSSH PRIVATE KEY-----|||OpenSSH format private key</item>
+        <item>SSH Private Key PuTTY|CRITICAL|PRIVATE|PRODUCTION|SSH|PuTTY-User-Key-File-2:|||PuTTY private key file</item>
+        <item>SSL Private Key|CRITICAL|PRIVATE|PRODUCTION|SSL|-----BEGIN PRIVATE KEY-----|||SSL/TLS private key</item>
+        <item>SSL Certificate|LOW|PUBLIC|PRODUCTION|SSL|-----BEGIN CERTIFICATE-----|||SSL/TLS certificate (public)</item>
+        <item>PGP Private Key|CRITICAL|PRIVATE|PRODUCTION|PGP|-----BEGIN PGP PRIVATE KEY BLOCK-----|||PGP private key block</item>
+
+        <!-- ========================================
+             MESSAGING AND COMMUNICATION PLATFORMS
+             ======================================== -->
+        <item>Slack Webhook URL|MEDIUM|PRIVATE|PRODUCTION|Slack|https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[A-Za-z0-9]+|||Slack incoming webhook URL</item>
+        <item>Slack Bot Token|HIGH|PRIVATE|PRODUCTION|Slack|xoxb-[0-9]{11,13}-[0-9]{11,13}-[A-Za-z0-9]{24}|||Slack bot user OAuth token</item>
+        <item>Slack User Token|HIGH|PRIVATE|PRODUCTION|Slack|xoxp-[0-9]{11,13}-[0-9]{11,13}-[0-9]{11,13}-[A-Za-z0-9]{32}|||Slack user OAuth token</item>
+        <item>Slack App Token|HIGH|PRIVATE|PRODUCTION|Slack|xapp-[0-9]{1}-[A-Z0-9]+-[0-9]{12,13}-[a-z0-9]{64}|||Slack app-level token</item>
+        <item>Twilio Account SID|MEDIUM|PUBLIC|PRODUCTION|Twilio|AC[a-f0-9]{32}|||Twilio account SID</item>
+        <item>Twilio Auth Token|CRITICAL|PRIVATE|PRODUCTION|Twilio|(?i)twilio.*auth.*token[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32}|||Twilio authentication token</item>
+        <item>Twilio API Key SID|MEDIUM|PUBLIC|PRODUCTION|Twilio|SK[a-f0-9]{32}|||Twilio API key SID</item>
+        <item>Twilio API Secret|CRITICAL|PRIVATE|PRODUCTION|Twilio|(?i)twilio.*api.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{32}|||Twilio API secret</item>
+        <item>SendGrid API Key|HIGH|PRIVATE|PRODUCTION|SendGrid|SG\.[A-Za-z0-9_-]{22}\.[A-Za-z0-9_-]{43}|||SendGrid API key</item>
+        <item>Mailgun API Key|HIGH|PRIVATE|PRODUCTION|Mailgun|key-[a-f0-9]{32}|||Mailgun API key</item>
+        <item>Mailchimp API Key|HIGH|PRIVATE|PRODUCTION|Mailchimp|[a-f0-9]{32}-us[0-9]{1,2}|||Mailchimp API key</item>
+
+        <!-- ========================================
+             THIRD-PARTY SERVICES
+             ======================================== -->
+        <item>Heroku API Key|HIGH|PRIVATE|PRODUCTION|Heroku|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||Heroku API key (UUID format)</item>
+        <item>Shopify Access Token|HIGH|PRIVATE|PRODUCTION|Shopify|shpat_[a-f0-9]{32}|||Shopify admin API access token</item>
+        <item>Shopify Private App Password|HIGH|PRIVATE|PRODUCTION|Shopify|shppa_[a-f0-9]{32}|||Shopify private app password</item>
+        <item>Shopify Shared Secret|CRITICAL|PRIVATE|PRODUCTION|Shopify|shpss_[a-f0-9]{32}|||Shopify app shared secret</item>
+        <item>Cloudflare API Key|HIGH|PRIVATE|PRODUCTION|Cloudflare|(?i)cloudflare.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{37}|||Cloudflare global API key</item>
+        <item>Cloudflare API Token|HIGH|PRIVATE|PRODUCTION|Cloudflare|(?i)cloudflare.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{40}|||Cloudflare API token</item>
+        <item>DigitalOcean Token|HIGH|PRIVATE|PRODUCTION|DigitalOcean|(?i)digitalocean.*token[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{64}|||DigitalOcean personal access token</item>
+        <item>NPM Token|HIGH|PRIVATE|PRODUCTION|NPM|npm_[A-Za-z0-9]{36}|||NPM access token</item>
+        <item>PyPI Token|HIGH|PRIVATE|PRODUCTION|PyPI|pypi-[A-Za-z0-9_-]{59,}|||PyPI upload token</item>
+        <item>Docker Hub Token|HIGH|PRIVATE|PRODUCTION|Docker|dckr_pat_[A-Za-z0-9_-]{36,}|||Docker Hub personal access token</item>
+        <item>GitLab Personal Access Token|HIGH|PRIVATE|PRODUCTION|GitLab|glpat-[0-9a-zA-Z_\-]{20}|||GitLab personal access token</item>
+        <item>GitLab Runner Token|HIGH|PRIVATE|PRODUCTION|GitLab|glrt-[0-9a-zA-Z_\-]{20}|||GitLab CI runner registration token</item>
+        <item>Bitbucket App Password|HIGH|PRIVATE|PRODUCTION|Bitbucket|(?i)bitbucket.*password[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{16,}|||Bitbucket app password</item>
+        <item>Jira API Token|HIGH|PRIVATE|PRODUCTION|Jira|(?i)jira.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{24}|||Jira API token</item>
+        <item>Confluence API Token|HIGH|PRIVATE|PRODUCTION|Confluence|(?i)confluence.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{24}|||Confluence API token</item>
+
+        <!-- ========================================
+             CLOUD STORAGE AND CDN
+             ======================================== -->
+        <item>Dropbox Access Token|HIGH|PRIVATE|PRODUCTION|Dropbox|sl\.[A-Za-z0-9_-]{130,}|||Dropbox long-lived access token</item>
+        <item>Dropbox App Secret|CRITICAL|PRIVATE|PRODUCTION|Dropbox|(?i)dropbox.*app.*secret[\s]*[:=][\s]*[&apos;&quot;]?[a-z0-9]{15}|||Dropbox app secret</item>
+        <item>Box Access Token|HIGH|PRIVATE|PRODUCTION|Box|(?i)box.*access.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{32,}|||Box API access token</item>
+        <item>Akamai API Token|HIGH|PRIVATE|PRODUCTION|Akamai|akaa-[a-z0-9-]{10,40}|||Akamai API client token</item>
+        <item>Fastly API Token|HIGH|PRIVATE|PRODUCTION|Fastly|(?i)fastly.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{32}|||Fastly API token</item>
+
+        <!-- ========================================
+             AUTHENTICATION PROVIDERS
+             ======================================== -->
+        <item>Auth0 Client Secret|CRITICAL|PRIVATE|PRODUCTION|Auth0|(?i)auth0.*client.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{32,64}|||Auth0 application client secret</item>
+        <item>Auth0 API Token|HIGH|PRIVATE|PRODUCTION|Auth0|eyJ[A-Za-z0-9_-]*\.eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]*|||Auth0 management API token (JWT)</item>
+        <item>Okta API Token|HIGH|PRIVATE|PRODUCTION|Okta|00[A-Za-z0-9_-]{40}|||Okta API token</item>
+        <item>Okta Client Secret|CRITICAL|PRIVATE|PRODUCTION|Okta|(?i)okta.*client.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{64}|||Okta OAuth client secret</item>
+        <item>OneLogin Client Secret|CRITICAL|PRIVATE|PRODUCTION|OneLogin|(?i)onelogin.*client.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{64}|||OneLogin OAuth client secret</item>
+
+        <!-- ========================================
+             ANALYTICS - INFO LEVEL (SAFE TO IGNORE)
+             ======================================== -->
+        <item>Amplitude Client Key|INFO|ANALYTICS|PRODUCTION|Amplitude|client-[a-zA-Z0-9]{32,}|||Amplitude client-side deployment key (safe for public use)</item>
+        <item>Amplitude Server Key|HIGH|PRIVATE|PRODUCTION|Amplitude|server-[a-zA-Z0-9]{32,}|||Amplitude server-side deployment key (must be secret)</item>
+        <item>PostHog Project Key|INFO|ANALYTICS|PRODUCTION|PostHog|phc_[a-zA-Z0-9_]{40,}|||PostHog project API key (safe for public use)</item>
+        <item>PostHog Personal Key|HIGH|PRIVATE|PRODUCTION|PostHog|phx_[a-zA-Z0-9_]{40,}|||PostHog personal API key (must be secret)</item>
+        <item>Google Analytics GA4|INFO|ANALYTICS|PRODUCTION|Google|G-[A-Z0-9]{10}|||Google Analytics 4 measurement ID (public)</item>
+        <item>Google Analytics UA|INFO|ANALYTICS|PRODUCTION|Google|UA-[0-9]{4,10}-[0-9]{1,4}|||Google Universal Analytics tracking ID (public)</item>
+        <item>Segment Write Key|INFO|ANALYTICS|PRODUCTION|Segment|sgp_[a-zA-Z0-9]{64}|||Segment modern write key (safe for public use)</item>
+        <item>Segment Legacy Write Key|INFO|ANALYTICS|PRODUCTION|Segment|(?i)segment.*write.*key[\s]*[:=][\s]*[&apos;&quot;]?[a-zA-Z0-9]{64}[&apos;&quot;]?|||Segment legacy 64-character write key (context-aware)</item>
+        <item>Datadog RUM Client Token|INFO|ANALYTICS|PRODUCTION|Datadog|pub[a-z0-9]{20,40}|||Datadog RUM public client token (safe for public use)</item>
+        <item>Datadog API Key|HIGH|PRIVATE|PRODUCTION|Datadog|(?i)datadog.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32}[&apos;&quot;]?|||Datadog API key (must be secret)</item>
+        <item>Datadog Application Key|HIGH|PRIVATE|PRODUCTION|Datadog|(?i)datadog.*app.*key[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{40}[&apos;&quot;]?|||Datadog application key (must be secret)</item>
+        <item>Hotjar Site ID|INFO|ANALYTICS|PRODUCTION|Hotjar|hjid:\s*[0-9]{6,7}|||Hotjar site ID (safe for public use)</item>
+        <item>LogRocket App ID|INFO|ANALYTICS|PRODUCTION|LogRocket|[a-z0-9]{6,10}/[a-z0-9\-]{3,50}|||LogRocket app ID in org/app format (safe for public use)</item>
+        <item>Mixpanel Project Token|INFO|ANALYTICS|PRODUCTION|Mixpanel|(?i)mixpanel.*token[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32}[&apos;&quot;]?|||Mixpanel project token (context-aware, safe for public use)</item>
+        <item>Mixpanel API Secret|HIGH|PRIVATE|PRODUCTION|Mixpanel|(?i)mixpanel.*secret[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32}[&apos;&quot;]?|||Mixpanel API secret (must be kept secret)</item>
+        <item>Heap App ID|INFO|ANALYTICS|PRODUCTION|Heap|(?i)heap.*app.*id[\s]*[:=][\s]*[&apos;&quot;]?\d{10,12}[&apos;&quot;]?|||Heap analytics app ID (context-aware, safe for public use)</item>
+        <item>Fullstory Org ID|INFO|ANALYTICS|PRODUCTION|Fullstory|(?i)_fs_org[\s]*[:=][\s]*[&apos;&quot;]?[A-Z0-9]{5,6}[&apos;&quot;]?|||Fullstory organization ID (context-aware, safe for public use)</item>
+        <item>Pendo App Key|INFO|ANALYTICS|PRODUCTION|Pendo|(?i)pendo.*key[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}[&apos;&quot;]?|||Pendo app key UUID (context-aware, safe for public use)</item>
+        <item>Graphite API Key|INFO|ANALYTICS|PRODUCTION|Graphite|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||Hosted Graphite metric submission key (safe for public use)</item>
+        <item>New Relic Browser Key|INFO|ANALYTICS|PRODUCTION|NewRelic|NRJS-[a-f0-9]{19}|||New Relic browser monitoring key (safe for public use)</item>
+        <item>New Relic API Key|HIGH|PRIVATE|PRODUCTION|NewRelic|NRAK-[A-Z0-9]{27}|||New Relic user API key (must be secret)</item>
+        <item>Sentry DSN|INFO|ANALYTICS|PRODUCTION|Sentry|https://[a-f0-9]{32}@[a-z0-9.-]+/[0-9]+|||Sentry DSN for error tracking (safe for public use)</item>
+        <item>Sentry Auth Token|HIGH|PRIVATE|PRODUCTION|Sentry|(?i)sentry.*token[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{64}[&apos;&quot;]?|||Sentry authentication token (must be secret)</item>
+        <item>Intercom App ID|INFO|ANALYTICS|PRODUCTION|Intercom|(?i)intercom.*app.*id[\s]*[:=][\s]*[&apos;&quot;]?[a-z0-9]{8}[&apos;&quot;]?|||Intercom app ID (safe for public use)</item>
+        <item>Intercom API Key|HIGH|PRIVATE|PRODUCTION|Intercom|(?i)intercom.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[a-zA-Z0-9_-]{32,}[&apos;&quot;]?|||Intercom API key (must be secret)</item>
+
+        <!-- ========================================
+             MONITORING AND OBSERVABILITY
+             ======================================== -->
+        <item>Prometheus Pushgateway URL|LOW|PUBLIC|PRODUCTION|Prometheus|https?://[a-z0-9.-]+:9091/metrics/job/|||Prometheus Pushgateway endpoint</item>
+        <item>Grafana API Key|HIGH|PRIVATE|PRODUCTION|Grafana|eyJ[A-Za-z0-9_-]*\.eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]*|||Grafana API key or service account token</item>
+        <item>Splunk HEC Token|HIGH|PRIVATE|PRODUCTION|Splunk|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||Splunk HTTP Event Collector token</item>
+        <item>Elasticsearch API Key|HIGH|PRIVATE|PRODUCTION|Elasticsearch|(?i)elastic.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{20,}[&apos;&quot;]?|||Elasticsearch API key</item>
+        <item>PagerDuty API Key|HIGH|PRIVATE|PRODUCTION|PagerDuty|(?i)pagerduty.*key[\s]*[:=][\s]*[&apos;&quot;]?[a-zA-Z0-9_-]{20}[&apos;&quot;]?|||PagerDuty REST API key</item>
+        <item>PagerDuty Integration Key|MEDIUM|PRIVATE|PRODUCTION|PagerDuty|[a-f0-9]{32}|||PagerDuty Events API v2 integration key</item>
+
+        <!-- ========================================
+             SOCIAL MEDIA PLATFORMS
+             ======================================== -->
+        <item>Facebook Access Token|HIGH|PRIVATE|PRODUCTION|Facebook|EAA[A-Za-z0-9]{100,}|||Facebook user or page access token</item>
+        <item>Facebook App Secret|CRITICAL|PRIVATE|PRODUCTION|Facebook|(?i)facebook.*app.*secret[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32}[&apos;&quot;]?|||Facebook app secret</item>
+        <item>Twitter API Key|HIGH|PRIVATE|PRODUCTION|Twitter|(?i)twitter.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{25}[&apos;&quot;]?|||Twitter/X API key (consumer key)</item>
+        <item>Twitter API Secret|CRITICAL|PRIVATE|PRODUCTION|Twitter|(?i)twitter.*api.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{50}[&apos;&quot;]?|||Twitter/X API secret key (consumer secret)</item>
+        <item>Twitter Access Token|HIGH|PRIVATE|PRODUCTION|Twitter|(?i)twitter.*access.*token[\s]*[:=][\s]*[&apos;&quot;]?[0-9]{10,20}-[A-Za-z0-9]{40}[&apos;&quot;]?|||Twitter/X OAuth access token</item>
+        <item>Twitter Bearer Token|HIGH|PRIVATE|PRODUCTION|Twitter|(?i)twitter.*bearer[\s]*[:=][\s]*[&apos;&quot;]?A{22}[A-Za-z0-9%]{80,}[&apos;&quot;]?|||Twitter/X App-only bearer token</item>
+        <item>LinkedIn Client Secret|CRITICAL|PRIVATE|PRODUCTION|LinkedIn|(?i)linkedin.*client.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{16}[&apos;&quot;]?|||LinkedIn OAuth client secret</item>
+        <item>Instagram Access Token|HIGH|PRIVATE|PRODUCTION|Instagram|IG[A-Za-z0-9]{100,}|||Instagram Graph API access token</item>
+
+        <!-- ========================================
+             E-COMMERCE AND MARKETING
+             ======================================== -->
+        <item>WooCommerce Consumer Key|MEDIUM|PUBLIC|PRODUCTION|WooCommerce|ck_[a-f0-9]{40}|||WooCommerce REST API consumer key</item>
+        <item>WooCommerce Consumer Secret|CRITICAL|PRIVATE|PRODUCTION|WooCommerce|cs_[a-f0-9]{40}|||WooCommerce REST API consumer secret</item>
+        <item>Magento API Key|HIGH|PRIVATE|PRODUCTION|Magento|(?i)magento.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{32}[&apos;&quot;]?|||Magento REST API integration key</item>
+        <item>HubSpot API Key|HIGH|PRIVATE|PRODUCTION|HubSpot|(?i)hubspot.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}[&apos;&quot;]?|||HubSpot API key</item>
+        <item>HubSpot Private App Token|HIGH|PRIVATE|PRODUCTION|HubSpot|pat-[a-z]{2}-[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||HubSpot private app access token</item>
+        <item>Salesforce Access Token|HIGH|PRIVATE|PRODUCTION|Salesforce|(?i)salesforce.*access.*token[\s]*[:=][\s]*[&apos;&quot;]?00D[A-Za-z0-9]{12,15}![A-Za-z0-9.]{100,}[&apos;&quot;]?|||Salesforce OAuth access token</item>
+        <item>Salesforce Refresh Token|CRITICAL|PRIVATE|PRODUCTION|Salesforce|(?i)salesforce.*refresh.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9._]{100,}[&apos;&quot;]?|||Salesforce OAuth refresh token</item>
+
+        <!-- ========================================
+             CRYPTOCURRENCY AND BLOCKCHAIN
+             ======================================== -->
+        <item>Coinbase API Key|HIGH|PRIVATE|PRODUCTION|Coinbase|(?i)coinbase.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{16}[&apos;&quot;]?|||Coinbase API key</item>
+        <item>Coinbase API Secret|CRITICAL|PRIVATE|PRODUCTION|Coinbase|(?i)coinbase.*api.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{32}[&apos;&quot;]?|||Coinbase API secret</item>
+        <item>Binance API Key|HIGH|PRIVATE|PRODUCTION|Binance|(?i)binance.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{64}[&apos;&quot;]?|||Binance API key</item>
+        <item>Binance Secret Key|CRITICAL|PRIVATE|PRODUCTION|Binance|(?i)binance.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{64}[&apos;&quot;]?|||Binance API secret key</item>
+        <item>Ethereum Private Key|CRITICAL|PRIVATE|PRODUCTION|Ethereum|(?i)eth.*private.*key[\s]*[:=][\s]*[&apos;&quot;]?(0x)?[a-fA-F0-9]{64}[&apos;&quot;]?|||Ethereum wallet private key</item>
+        <item>Bitcoin Private Key WIF|CRITICAL|PRIVATE|PRODUCTION|Bitcoin|[5KL][1-9A-HJ-NP-Za-km-z]{50,51}|||Bitcoin wallet private key in WIF format</item>
+
+        <!-- ========================================
+             MOBILE AND PUSH NOTIFICATIONS
+             ======================================== -->
+        <item>Firebase Server Key|HIGH|PRIVATE|PRODUCTION|Firebase|(?i)firebase.*server.*key[\s]*[:=][\s]*[&apos;&quot;]?AAAA[A-Za-z0-9_-]{7}:[A-Za-z0-9_-]{140}[&apos;&quot;]?|||Firebase Cloud Messaging server key (legacy)</item>
+        <item>OneSignal API Key|HIGH|PRIVATE|PRODUCTION|OneSignal|(?i)onesignal.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{48}[&apos;&quot;]?|||OneSignal REST API key</item>
+        <item>OneSignal App ID|LOW|PUBLIC|PRODUCTION|OneSignal|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||OneSignal app ID (safe for public use)</item>
+        <item>Pusher App Key|LOW|PUBLIC|PRODUCTION|Pusher|[a-f0-9]{20}|||Pusher app key (safe for public use)</item>
+        <item>Pusher App Secret|CRITICAL|PRIVATE|PRODUCTION|Pusher|(?i)pusher.*secret[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{20}[&apos;&quot;]?|||Pusher app secret</item>
+        <item>Apple Push Notification Key|CRITICAL|PRIVATE|PRODUCTION|Apple|(?i)apns.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{10}[&apos;&quot;]?|||Apple Push Notification service auth key ID</item>
+
+        <!-- ========================================
+             AI AND MACHINE LEARNING SERVICES
+             ======================================== -->
+        <item>OpenAI API Key|HIGH|PRIVATE|PRODUCTION|OpenAI|sk-[A-Za-z0-9]{48}|||OpenAI API secret key</item>
+        <item>Anthropic API Key|HIGH|PRIVATE|PRODUCTION|Anthropic|sk-ant-[A-Za-z0-9_-]{95,}|||Anthropic Claude API key</item>
+        <item>Cohere API Key|HIGH|PRIVATE|PRODUCTION|Cohere|(?i)cohere.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{40}[&apos;&quot;]?|||Cohere API key</item>
+        <item>Hugging Face API Token|HIGH|PRIVATE|PRODUCTION|HuggingFace|hf_[A-Za-z0-9]{37}|||Hugging Face user access token</item>
+        <item>Replicate API Token|HIGH|PRIVATE|PRODUCTION|Replicate|r8_[A-Za-z0-9]{40}|||Replicate API token</item>
+
+        <!-- ========================================
+             MAPS AND LOCATION SERVICES
+             ======================================== -->
+        <item>Google Maps API Key|MEDIUM|PUBLIC|PRODUCTION|Google|AIza[0-9A-Za-z\-_]{35}|||Google Maps JavaScript API key (public but should be restricted)</item>
+        <item>Mapbox Access Token|MEDIUM|PUBLIC|PRODUCTION|Mapbox|pk\.[A-Za-z0-9_-]{60,}|||Mapbox public access token</item>
+        <item>Mapbox Secret Token|CRITICAL|PRIVATE|PRODUCTION|Mapbox|sk\.[A-Za-z0-9_-]{60,}|||Mapbox secret access token</item>
+        <item>HERE API Key|MEDIUM|PUBLIC|PRODUCTION|HERE|(?i)here.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{43}[&apos;&quot;]?|||HERE Maps API key</item>
+
+        <!-- ========================================
+             VIDEO AND MEDIA SERVICES
+             ======================================== -->
+        <item>YouTube API Key|MEDIUM|PUBLIC|PRODUCTION|YouTube|AIza[0-9A-Za-z\-_]{35}|||YouTube Data API key</item>
+        <item>Vimeo Access Token|HIGH|PRIVATE|PRODUCTION|Vimeo|(?i)vimeo.*token[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32}[&apos;&quot;]?|||Vimeo OAuth access token</item>
+        <item>Cloudinary API Key|MEDIUM|PUBLIC|PRODUCTION|Cloudinary|(?i)cloudinary.*api.*key[\s]*[:=][\s]*[&apos;&quot;]?\d{15}[&apos;&quot;]?|||Cloudinary API key</item>
+        <item>Cloudinary API Secret|CRITICAL|PRIVATE|PRODUCTION|Cloudinary|(?i)cloudinary.*api.*secret[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{27}[&apos;&quot;]?|||Cloudinary API secret</item>
+        <item>Imgur Client ID|MEDIUM|PUBLIC|PRODUCTION|Imgur|[a-f0-9]{15}|||Imgur API client ID</item>
+        <item>Imgur Client Secret|CRITICAL|PRIVATE|PRODUCTION|Imgur|(?i)imgur.*secret[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{40}[&apos;&quot;]?|||Imgur API client secret</item>
+
+        <!-- ========================================
+             ADDITIONAL PATTERNS
+             ======================================== -->
+        <item>Terraform Cloud Token|HIGH|PRIVATE|PRODUCTION|Terraform|[A-Za-z0-9]{14}\.[atlasv1]{7}\.[A-Za-z0-9_-]{60,}|||Terraform Cloud user/team API token</item>
+        <item>CircleCI Personal Token|HIGH|PRIVATE|PRODUCTION|CircleCI|(?i)circleci.*token[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{40}[&apos;&quot;]?|||CircleCI personal API token</item>
+        <item>Travis CI Access Token|HIGH|PRIVATE|PRODUCTION|TravisCI|(?i)travis.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9_-]{22}[&apos;&quot;]?|||Travis CI access token</item>
+        <item>Jenkins API Token|HIGH|PRIVATE|PRODUCTION|Jenkins|(?i)jenkins.*token[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{32,34}[&apos;&quot;]?|||Jenkins API token</item>
+        <item>Artifactory API Key|HIGH|PRIVATE|PRODUCTION|Artifactory|AKC[A-Za-z0-9]{10,}|||JFrog Artifactory API key</item>
+        <item>Sonatype Nexus Token|HIGH|PRIVATE|PRODUCTION|Nexus|(?i)nexus.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{32,}[&apos;&quot;]?|||Sonatype Nexus authentication token</item>
+        <item>SonarQube Token|HIGH|PRIVATE|PRODUCTION|SonarQube|squ_[a-f0-9]{40}|||SonarQube user or project analysis token</item>
+        <item>Snyk API Token|HIGH|PRIVATE|PRODUCTION|Snyk|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|||Snyk API authentication token</item>
+        <item>Codecov Token|HIGH|PRIVATE|PRODUCTION|Codecov|(?i)codecov.*token[\s]*[:=][\s]*[&apos;&quot;]?[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}[&apos;&quot;]?|||Codecov upload token</item>
+        <item>Coveralls Token|HIGH|PRIVATE|PRODUCTION|Coveralls|(?i)coveralls.*token[\s]*[:=][\s]*[&apos;&quot;]?[A-Za-z0-9]{47}[&apos;&quot;]?|||Coveralls repo token</item>
+
+    </string-array>
+</resources>
