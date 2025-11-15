@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_outline_info_24" android:id="@id/action_headers" android:title="@string/action_info" app:showAsAction="always" />
+    <item android:icon="@drawable/ic_baseline_link_gray_24" android:id="@id/action_copy_link" android:title="@string/action_copy_link" app:showAsAction="always" />
+    <item android:icon="@drawable/ic_baseline_open_in_browser_gray_24" android:id="@id/action_open_in_browser" android:title="@string/action_open_in_browser" app:showAsAction="always" />
+</menu>

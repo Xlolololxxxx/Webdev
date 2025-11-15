@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yandex.mobile.ads.nativeads.NativeAdView android:id="@id/native_ad_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:paddingLeft="@dimen/native_offset_medium" android:paddingRight="@dimen/native_offset_medium" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/feedback" android:layout_centerVertical="true">
+                <TextView android:textSize="@dimen/native_asset_text_size_small" android:textColor="@color/native_asset_text_color" android:id="@id/sponsored" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+                <TextView android:textSize="@dimen/native_asset_text_size_small" android:textColor="@color/native_asset_text_color" android:id="@id/age" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/native_offset_medium" android:maxLines="1" />
+            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatImageView android:id="@id/feedback" android:layout_width="@dimen/native_favicon_width" android:layout_height="@dimen/native_favicon_height" android:src="@drawable/ic_baseline_more_vert_24" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/native_offset_medium" android:paddingRight="@dimen/native_offset_medium" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.yandex.mobile.ads.nativeads.MediaView android:id="@id/media" android:layout_width="@dimen/native_image_width" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="@dimen/native_offset_medium" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/native_asset_text_size_large" android:textColor="@color/quantum_black_text" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
+                <TextView android:textSize="@dimen/native_asset_text_size_medium" android:textColor="@color/quantum_black_text" android:id="@id/body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="3" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/icon" android:layout_width="@dimen/native_favicon_width" android:layout_height="@dimen/native_favicon_height" android:layout_marginRight="@dimen/native_offset_small" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+                    <ImageView android:id="@id/favicon" android:layout_width="@dimen/native_favicon_width" android:layout_height="@dimen/native_favicon_height" android:layout_marginRight="@dimen/native_offset_small" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+                    <TextView android:textSize="@dimen/native_asset_text_size_medium" android:textColor="@color/native_asset_text_color" android:id="@id/domain" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:paddingLeft="@dimen/native_offset_medium" android:paddingRight="@dimen/native_offset_medium" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/layout_rating" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.svector.sitesources.ui.views.RatingView android:id="@id/rating" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/native_offset_small" android:layout_marginRight="@dimen/native_offset_medium" android:numStars="5" android:stepSize="0.5" style="?android:ratingBarStyleSmall" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/native_asset_text_size_medium" android:textColor="@color/native_asset_text_color" android:ellipsize="end" android:id="@id/review_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/native_offset_large" android:maxLines="1" />
+                    <TextView android:textSize="@dimen/native_asset_text_size_medium" android:textColor="@color/native_asset_text_color" android:id="@id/price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/native_offset_medium" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button android:textSize="@dimen/native_asset_text_size_medium" android:textColor="@color/quantum_black_text" android:id="@id/call_to_action" android:paddingTop="@dimen/native_offset_medium" android:paddingBottom="@dimen/native_offset_medium" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/native_call_to_action_asset_min_height" android:maxLines="1" android:layout_toRightOf="@id/layout_rating" android:layout_alignParentRight="true" android:textAllCaps="false" android:fontFamily="sans-serif" app:cornerRadius="5.0dip" app:strokeColor="@color/native_button_background" app:strokeWidth="0.5dip" style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/native_asset_text_size_medium" android:textColor="@color/native_asset_text_color" android:id="@id/warning" android:paddingLeft="@dimen/native_offset_medium" android:paddingTop="@dimen/native_offset_small" android:paddingRight="@dimen/native_offset_medium" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.yandex.mobile.ads.nativeads.NativeAdView>

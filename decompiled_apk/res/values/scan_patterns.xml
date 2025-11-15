@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Sensitive Data Scanner Patterns -->
+    <!-- Format: pattern_name|pattern_regex -->
+
+    <string-array name="scan_patterns">
+        <!-- AWS Keys -->
+        <item>AWS API Key|AKIA[0-9A-Z]{16}</item>
+        <item>AWS Access Key ID|(A3T[A-Z0-9]|AKIA|AGPA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}</item>
+        <item>AWS S3 Bucket|s3://[0-9a-z._/-]+</item>
+        <item>AWS Credentials|(?i)(aws_access_key_id|aws_secret_access_key)</item>
+
+        <!-- GitHub -->
+        <item>GitHub Token|(ghp|gho|ghu|ghs|ghr)_[0-9a-zA-Z]{36,255}</item>
+        <item>GitHub Old Token|[0-9a-f]{40}</item>
+
+        <!-- Slack -->
+        <item>Slack Token|xox[baprs]-[0-9a-zA-Z-]{10,72}</item>
+        <item>Slack Webhook|https://hooks\.slack\.com/services/T[a-zA-Z0-9_]{8,10}/B[a-zA-Z0-9_]{8,12}/[a-zA-Z0-9_]{23,24}</item>
+
+        <!-- Google -->
+        <item>Google API Key|AIza[0-9a-z-_]{35}</item>
+        <item>Google OAuth|ya29\.[0-9A-Za-z\-_]+</item>
+        <item>Google Cloud Key|(?i)google[_-]?(api)?[_-]?key["\']?\s*[:=]\s*["\'][A-Za-z0-9_-]{35,}["\']</item>
+
+        <!-- Stripe -->
+        <item>Stripe Live Key|sk_live_[0-9a-zA-Z]{24,}</item>
+        <item>Stripe Test Key|sk_test_[0-9a-zA-Z]{24,}</item>
+        <item>Stripe Public Key|pk_(live|test)_[0-9a-z]{24,}</item>
+
+        <!-- SendGrid -->
+        <item>SendGrid API Key|SG\.[\w\-_]{20,24}\.[\w\-_]{39,50}</item>
+
+        <!-- Mailgun -->
+        <item>Mailgun API Key|key-[0-9a-zA-Z]{32}</item>
+
+        <!-- Discord -->
+        <item>Discord Bot Token|([A-Za-z0-9_-]{24}\.[A-Za-z0-9_-]{6}\.[A-Za-z0-9_-]{27})</item>
+        <item>Discord Webhook|https://discord(?:app)?\.com/api/webhooks/[0-9]+/[A-Za-z0-9\-]+</item>
+
+        <!-- Twilio -->
+        <item>Twilio Account SID|AC[0-9a-f]{32}</item>
+        <item>Twilio API Key|SK[0-9a-fA-F]{32}</item>
+
+        <!-- Facebook -->
+        <item>Facebook Access Token|EAACEdEose0cBA[0-9A-Za-z]+</item>
+        <item>Facebook OAuth|[fF][aA][cC][eE][bB][oO][oO][kK].*["\'][0-9a-f]{32}["\']</item>
+
+        <!-- MailChimp -->
+        <item>MailChimp API Key|[0-9a-f]{32}-us[0-9]{1,2}</item>
+
+        <!-- Shopify -->
+        <item>Shopify Access Token|shpat_[a-fA-F0-9]{32}</item>
+        <item>Shopify Custom Token|shpca_[a-fA-F0-9]{32}</item>
+
+        <!-- Private Keys -->
+        <item>Private Key|-----BEGIN (RSA|DSA|EC|OPENSSH)? ?PRIVATE KEY</item>
+        <item>PGP Private Key|-----BEGIN PGP PRIVATE KEY BLOCK-----</item>
+
+        <!-- JWT -->
+        <item>JWT Token|eyJ[a-zA-Z0-9_-]+\.eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+</item>
+
+        <!-- Authentication -->
+        <item>Basic Auth|[a-zA-Z]{3,10}://[^/\s:@]{3,20}:[^/\s:@]{3,20}@</item>
+        <item>Bearer Token|(?i)bearer\s+[a-zA-Z0-9_\-\.=]+</item>
+
+        <!-- Generic Patterns -->
+        <item>Generic API Key|(?i)[aA][pP][iI][\-_]?[kK][eE][yY]["\']?\s*[:=]\s*["\']?[A-Za-z0-9\-_]{20,}["\']?</item>
+        <item>Generic Token|(?i)[tT][oO][kK][eE][nN]["\']?\s*[:=]\s*["\']?[A-Za-z0-9\-_]{20,}["\']?</item>
+        <item>Generic Secret|(?i)[sS][eE][cC][rR][eE][tT]["\']?\s*[:=]\s*["\']?[0-9a-zA-Z\-_]{20,}["\']?</item>
+        <item>Generic Password|(?i)[pP][aA][sS][sS]([wW][oO][rR][dD])?["\']?\s*[:=]\s*["\']?[^\s"\']{8,}["\']?</item>
+        <item>API Endpoint|https?://[a-zA-Z0-9\-\.]+/api/[a-zA-Z0-9\-_/]+</item>
+
+        <!-- Database -->
+        <item>JDBC Connection|jdbc:[a-z:]+://[A-Za-z0-9\.\-_:;=/@?,&amp;]+</item>
+        <item>MongoDB|mongodb(\+srv)?://[A-Za-z0-9\.\-_:;=/@?,&amp;]+</item>
+        <item>PostgreSQL|postgres(ql)?://[A-Za-z0-9\.\-_:;=/@?,&amp;]+</item>
+
+        <!-- Heroku -->
+        <item>Heroku API Key|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}</item>
+
+        <!-- Databricks -->
+        <item>Databricks Token|dapi[a-f0-9]{32}</item>
+
+        <!-- NPM -->
+        <item>NPM Token|npm_[a-zA-Z0-9]{36}</item>
+
+        <!-- PayPal -->
+        <item>PayPal Braintree|access_token\$production\$[a-z0-9]{16}\$[a-f0-9]{32}</item>
+
+        <!-- Square -->
+        <item>Square OAuth|sq0atp-[0-9A-Za-z\-_]{22}</item>
+        <item>Square Access Token|sq0csp-[0-9A-Za-z\-_]{43}</item>
+
+        <!-- Azure -->
+        <item>Azure Storage Key|(?i)AccountKey=[A-Za-z0-9+/=]{88}</item>
+
+        <!-- Email Addresses -->
+        <item>Email Address|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</item>
+
+        <!-- Auth Tokens -->
+        <item>Access Token|(?i)access[_-]?token["\']?\s*[:=]\s*["\']?[a-zA-Z0-9\-_\.=]{20,}["\']?</item>
+        <item>Auth Token|(?i)auth[_-]?token["\']?\s*[:=]\s*["\']?[a-zA-Z0-9\-_\.=]{20,}["\']?</item>
+
+        <!-- IP Addresses (Private) -->
+        <item>Private IP|(?:10\.|172\.(?:1[6-9]|2[0-9]|3[01])\.|192\.168\.)[0-9]{1,3}\.[0-9]{1,3}</item>
+    </string-array>
+</resources>
