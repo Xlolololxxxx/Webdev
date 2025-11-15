@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- URL Input Section (shown initially) -->
+    <LinearLayout
+        android:id="@+id/layout_url_input"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Web Source Scanner"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="32dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter URL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                android:imeOptions="actionGo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_load"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Load Website"
+            android:minHeight="56dp" />
+    </LinearLayout>
+
+    <!-- WebView Section (shown after loading) -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Bottom Sheet -->
+    <LinearLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_peekHeight="56dp"
+        app:behavior_hideable="false">
+
+        <!-- Bottom Sheet Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#1976D2"
+            android:elevation="4dp">
+
+            <ImageView
+                android:id="@+id/img_tab_icon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="16dp"
+                android:src="@android:drawable/ic_menu_sort_by_size"
+                android:tint="@android:color/white"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true" />
+
+            <TextView
+                android:id="@+id/txt_tab_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sources (0)"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_toEndOf="@id/img_tab_icon"
+                android:layout_centerVertical="true" />
+
+            <ImageView
+                android:id="@+id/img_expand"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="16dp"
+                android:src="@android:drawable/arrow_up_float"
+                android:tint="@android:color/white"
+                android:layout_toStartOf="@id/img_tab_switch"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+
+            <ImageView
+                android:id="@+id/img_tab_switch"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="16dp"
+                android:src="@android:drawable/ic_menu_view"
+                android:tint="@android:color/white"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+        </RelativeLayout>
+
+        <!-- Bottom Sheet Content -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Sources Tab -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_sources"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <!-- Console Tab -->
+            <ScrollView
+                android:id="@+id/scroll_console"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txt_console"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:text="Console output will appear here..."
+                    android:textIsSelectable="true" />
+            </ScrollView>
+
+            <!-- Scan Results Tab -->
+            <LinearLayout
+                android:id="@+id/layout_scan_results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:gravity="center_vertical">
+
+                    <Button
+                        android:id="@+id/btn_scan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Run Scan" />
+
+                    <Button
+                        android:id="@+id/btn_clear_results"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Clear"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_scan_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
