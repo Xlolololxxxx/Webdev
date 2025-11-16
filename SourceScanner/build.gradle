@@ -3,13 +3,14 @@ buildscript {
     ext.kotlin_version = '1.9.20'
     repositories {
         maven { url '/home/user/Webdev/local-maven-repo' }
-        maven { url 'https://repo1.maven.org/maven2' }
         maven { url 'https://maven.google.com' }
-        mavenCentral()
         google()
+        maven { url 'https://repo.maven.apache.org/maven2' }
+        maven { url 'https://repo1.maven.org/maven2' }
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }

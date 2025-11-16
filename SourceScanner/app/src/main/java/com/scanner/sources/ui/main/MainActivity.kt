@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
-                super.onPageFinished(view, url, favicon)
+                super.onPageFinished(view, url)
                 swipeRefresh.isRefreshing = false
                 logToConsole("Finished loading: $url")
             }
