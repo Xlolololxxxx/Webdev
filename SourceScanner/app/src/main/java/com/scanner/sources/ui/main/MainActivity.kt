@@ -208,7 +208,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initScanner() {
-        scanner = SensitiveDataScanner()
+        // Initialize with context to use enhanced 227-pattern scanner
+        scanner = SensitiveDataScanner(this)
     }
 
     private fun setupListeners() {
