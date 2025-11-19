@@ -1,19 +1,16 @@
-# Android SDK (local installation)
-android-sdk/
-
-# Proxy and build scripts
-auth-proxy.js
-build-real-scanner.sh
-proxy.log
-
 # Gradle files
-SourceScanner/.gradle/
-SourceScanner/build/
-SourceScanner/app/build/
-!SourceScanner/app/build/outputs/apk/debug/app-debug.apk
+.gradle/
+build/
+app/build/
+!app/build/outputs/apk/debug/app-debug.apk
 
 # Gradle build logs
-SourceScanner/gradle-build*.log
+gradle-build*.log
 
 # Local configuration
-SourceScanner/local.properties
+local.properties
+
+# Android Studio
+*.iml
+.idea/
+.DS_Store
