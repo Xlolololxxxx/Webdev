@@ -23,3 +23,11 @@ local-maven-repo/
 SourceScanner-Minimal/
 build-minimal/
 SensitiveDataScanner.apk.idsig
+
+# Android SDK (local installation)
+android-sdk/
+
+# Proxy and build scripts  
+auth-proxy.js
+build-real-scanner.sh
+proxy.log
